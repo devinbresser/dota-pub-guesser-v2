@@ -1,3 +1,5 @@
+const goodLobbyTypes = [1,2,3,4,5,16,22];
+
 // filterBadMatches: filters matches under 21 minutes in duration and in unusual modes
 function filterBadMatches(matchArray){
     // scan all matches for bad ones and toss them

@@ -6,8 +6,6 @@ require('dotenv').config();
 // import constants
 const heroList = require('./constants/heroList')
 const regionList = require('./constants/regionList')
-const goodLobbyTypes = [1,2,3,4,5,16,22];
-const endingMatchId = 5447321333;
 const ranks = ['HERALD','GUARDIAN','CRUSADER','ARCHON','LEGEND','ANCIENT','DIVINE','IMMORTAL']
 
 // import utility functions
@@ -17,6 +15,7 @@ const getDuration = require('./utils/getDuration');
 
 // import services
 const exampleSVC = require('./services/exampleService');
+const getMatchData = require('./services/getMatchData');
 
 
 //* express function
@@ -29,6 +28,12 @@ app.use(cors());
 app.get('/', (req, res) => {
   res.send(getDuration(5434));
 });
+
+app.get('/getMatchData/:index', async(req,res) => {
+   console.log("Just got a request for some match data");
+   const response = await getMatchData();
+   res.send(response[0]);
+})
 
 //* second route for getting Data, with params
 app.get('/getData/:numberGen', async (req, res) => {
